@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Campus Connect | Explore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div id="landing-page">
+        <div class="hero-content">
+            <h1>Welcome to <span>Campus Connect</span></h1>
+            <p>Your ultimate hub for Campus Events, Technical Workshops, and Cultural Festivals.</p>
+            <button class="explore-btn" onclick="enterSite()">Explore Events</button>
+        </div>
+    </div>
+
+    <nav id="navigation">
+        <div class="logo-area">
+            <section id="Campus">Campus</section><section id="connect">Connect</section>
+        </div>
+        <div class="nav-buttons">
+            <button id="one" onclick="coloron1()">All</button>
+            <button id="two" onclick="coloron2()">Technical</button>
+            <button id="three" onclick="coloron3()">Non-Technical</button>  
+        </div>
+    </nav>
+
+    <div id="page">
+        <div id="box1" class="event-box floating" style="animation-delay: 0s;">
+            <section id="Technical" class="cat-tech"><h4>Technical </h4></section>
+            <section id="topic1"><h3>Hack-Overnight </h3></section>
+            <section id="content1">24 hour coding marathon to solve real world problems</section>
+            <button id="reg-btn-1" class="register-btn" onclick="coloron(1)">Register</button>
+        </div>
+        <div id="box2" class="event-box floating" style="animation-delay: 0.2s;">
+            <section id="Cultural" class="cat-cult"><h4>Cultural</h4></section>
+            <section id="topic2"><h3>Fusion Dance Fest</h3></section>
+            <section id="content2">Showcase your talent in the annual inter-college dance battle</section>
+            <button id="reg-btn-2" class="register-btn" onclick="coloron(2)">Register</button>
+        </div>
+
+        <div id="box3" class="event-box floating" style="animation-delay: 0.4s;">
+            <section id="Technical2" class="cat-tech"><h4>Technical</h4></section>
+            <section id="topic3"><h3>AI-Workshop</h3></section>
+            <section id="content3">Learn the basics of nural networks and python AI libraries</section>
+            <button id="reg-btn-3" class="register-btn" onclick="coloron(3)">Register</button>
+        </div>
+
+        <div id="box4" class="event-box floating" style="animation-delay: 0.6s;">
+            <section id="Cultural2" class="cat-cult"><h4>Cultural</h4></section>
+            <section id="topic4"><h3>Reels Contest</h3></section>
+            <section id="content4">Show your creativity in just a seconds! Join and let your content speak.</section>
+            <button id="reg-btn-4" class="register-btn" onclick="coloron(4)">Register</button>
+        </div>
+
+        <div id="box5" class="event-box floating" style="animation-delay: 0.8s;">
+            <section id="Technical3" class="cat-tech"><h4>Technical</h4></section>
+            <section id="topic5"><h3>Tech-quiz</h3></section>
+            <section id="content5">Test your tech knowledge and sharpen your problem solving skills.</section>
+            <button id="reg-btn-5" class="register-btn" onclick="coloron(5)">Register</button>
+        </div>
+
+        <div id="box6" class="event-box floating" style="animation-delay: 1.0s;">
+            <section id="Technical4" class="cat-tech"><h4>Technical</h4></section>
+            <section id="topic6"><h3>Project-Expo</h3></section>
+            <section id="content6">Showcase your innovative ideas and real-world projects</section>
+            <button id="reg-btn-6" class="register-btn" onclick="coloron(6)">Register</button>
+        </div>
+
+        <div id="box7" class="event-box floating" style="animation-delay: 1.2s;">
+            <section id="Cultural3" class="cat-cult"><h4>Cultural</h4></section>
+            <section id="topic7"><h3>Fashion-Show</h3></section> 
+            <section id="content7">Walk the ramp with confidence and showcase your unique style.</section>
+            <button id="reg-btn-7" class="register-btn" onclick="coloron(7)">Register</button>
+        </div>
+
+        <div id="box8" class="event-box floating" style="animation-delay: 1.4s;">
+            <section id="Cultural4" class="cat-cult"><h4>Cultural</h4></section>
+            <section id="topic8"><h3>Melody Masters</h3></section>
+            <section id="content8">Showcase your vocal talent and captivate the audience with your voice</section>
+            <button id="reg-btn-8" class="register-btn" onclick="coloron(8)">Register</button>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <form id="regForm" class="modal-content"> <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalEventTitle">Register for <span>Event</span></h2>
+            <input type="text" name="full_name" placeholder="Full Name" required>
+            <select name="degree" required>
+                <option value="">Select Degree</option>
+                <option>B.E</option>
+                <option>B.Tech</option>
+                <option>B.Sc</option>
+                <option>BCA</option>
+                <option>MCA</option>
+            </select>
+            <input type="text" name="branch" placeholder="Branch" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <button type="submit" class="submit-btn">Submit Registration</button>
+        </form>
+    </div>
+
+    <script>
+        function enterSite() {
+            document.getElementById('landing-page').style.transform = 'translateY(-100%)';
+            document.body.style.overflowY = 'auto';
+        }
+    
+        let activeBox = null;
+    
+        function coloron1(){
+            for(let i=1; i<=8; i++){ document.getElementById("box"+i).style.display="block"; }
+        }
+        
+        function coloron2(){
+            let tech=["box1","box3","box5","box6"];
+            let cult=["box2","box4","box7","box8"];
+            tech.forEach(id => document.getElementById(id).style.display="block");
+            cult.forEach(id => document.getElementById(id).style.display="none");
+        }
+    
+        function coloron3(){
+            let tech=["box1","box3","box5","box6"];
+            let cult=["box2","box4","box7","box8"];
+            tech.forEach(id => document.getElementById(id).style.display="none");
+            cult.forEach(id => document.getElementById(id).style.display="block");
+        }
+    
+        function coloron(boxNumber){
+            activeBox = boxNumber;
+            let eventName = document.querySelector(`#box${boxNumber} h3`).innerText;
+            document.getElementById("modalEventTitle").innerHTML = `Register for <span>${eventName}</span>`;
+            document.getElementById("registerModal").style.display = "flex";
+        }
+    
+        function closeModal(){
+            document.getElementById("registerModal").style.display = "none";
+        }
+    
+        document.getElementById("regForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+            console.log("Submit clicked, sending data...");
+    
+            let formData = new FormData(this);
+            let eventName = document.querySelector("#modalEventTitle span").innerText;
+            formData.append('event_name', eventName);
+    
+            fetch('/register', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Server error: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Server Response:", data);
+                if(data.status === "success") {
+                    if(activeBox) {
+                        let btn = document.getElementById("reg-btn-" + activeBox);
+                        btn.innerHTML = "Registered ✓";
+                        btn.classList.add("registered-btn");
+                        btn.onclick = null;
+                        btn.style.cursor = "default";
+                    }
+                    closeModal();
+                    alert("Registration Successful!");
+                } else {
+                    alert("Error: " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Fetch Error:', error);
+                alert("Failed to connect to the server. Check if Flask is running and MySQL is connected.");
+            });
+        });
+    </script>
+</body>
+</html>
